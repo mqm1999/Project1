@@ -2,7 +2,6 @@ package com.example.project1.repository;
 
 import com.example.project1.dto.LedDiemDungDTO;
 import com.example.project1.helper.JDBCMapper.LedDiemDungDTOMapper;
-import com.example.project1.helper.JDBCMapper.XeBusDTOMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -15,17 +14,17 @@ public class LedDiemDungRepository {
     JdbcTemplate jdbcTemplate;
 
     public List<LedDiemDungDTO> getAllLedDiemDungASC() {
-        String sql = "select * from led_diem_dung order by ID_ledDiemDung ASC;";
+        String sql = "select * from led_diem_dung order by ID_ledDiemDungTT ASC;";
         return jdbcTemplate.query(sql, new LedDiemDungDTOMapper());
     }
 
     public List<LedDiemDungDTO> getAllLedDiemDungDESC() {
-        String sql = "select * from led_diem_dung order by ID_ledDiemDung DESC;";
+        String sql = "select * from led_diem_dung order by ID_ledDiemDungTT DESC;";
         return jdbcTemplate.query(sql, new LedDiemDungDTOMapper());
     }
 
     public Boolean checkLedDiemDungExistedByID(Integer ID_ledDiemDung) {
-        String sql = "select existed (select * from led_diem_dung where ID_ledDiemDung = ?);";
+        String sql = "select existed (select * from led_diem_dung where ID_ledDiemDungTT = ?);";
         Object[] params = {ID_ledDiemDung};
         return jdbcTemplate.queryForObject(sql, Boolean.class , params);
     }

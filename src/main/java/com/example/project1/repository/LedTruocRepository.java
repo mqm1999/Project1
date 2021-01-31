@@ -19,7 +19,7 @@ public class LedTruocRepository {
     }
 
     public List<LedTruocDTO> getAllLedTruocDESC() {
-        String sql = "select * from led_trong order by ID_ledTruoc DESC;";
+        String sql = "select * from led_truoc order by ID_ledTruoc DESC;";
         return jdbcTemplate.query(sql, new LedTruocDTOMapper());
     }
 
